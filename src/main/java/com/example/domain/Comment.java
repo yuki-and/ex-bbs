@@ -2,7 +2,7 @@ package com.example.domain;
 
 
 /**
- * Commnetsテーブルを表すリポジトリ.
+ * コメント情報を表すリポジトリ.
  * 
  * @author yukiando
  *

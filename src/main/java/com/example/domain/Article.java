@@ -1,7 +1,7 @@
 package com.example.domain;
 
 /**
- * Articlesテーブル表すドメイン.
+ * 記事情報を表すドメイン.
  * 
  * @author yukiando
  *
@@ -17,18 +17,14 @@ public class Article {
 	/**	コンテント */
 	private String content;
 	
-	/**	投稿ID */
-	private Integer articleId;
-	
 	public Article() {
 	}
 
-	public Article(Integer id, String name, String content, Integer articleId) {
+	public Article(Integer id, String name, String content) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.content = content;
-		this.articleId = articleId;
 	}
 
 	public Integer getId() {
@@ -55,16 +51,9 @@ public class Article {
 		this.content = content;
 	}
 
-	public Integer getArticleId() {
-		return articleId;
-	}
-
-	public void setArticleId(Integer articleId) {
-		this.articleId = articleId;
-	}
-
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", name=" + name + ", content=" + content + ", articleId=" + articleId + "]";
+		return "Article [id=" + id + ", name=" + name + ", content=" + content + "]";
 	}
+
 }
