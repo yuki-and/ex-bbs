@@ -1,32 +1,34 @@
 package com.example.domain;
 
-
 /**
- * Commnetsテーブルを表すリポジトリ.
+ * Articlesテーブル表すドメイン.
  * 
  * @author yukiando
  *
  */
-public class Comment {
+public class Article {
 
-	
 	/**	ID */
 	private Integer id;
 	
 	/**	名前 */
 	private String name;
 	
-	/** コンテント */
+	/**	コンテント */
 	private String content;
 	
-	public Comment() {
+	/**	投稿ID */
+	private Integer articleId;
+	
+	public Article() {
 	}
 
-	public Comment(Integer id, String name, String content) {
+	public Article(Integer id, String name, String content, Integer articleId) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.content = content;
+		this.articleId = articleId;
 	}
 
 	public Integer getId() {
@@ -53,8 +55,16 @@ public class Comment {
 		this.content = content;
 	}
 
+	public Integer getArticleId() {
+		return articleId;
+	}
+
+	public void setArticleId(Integer articleId) {
+		this.articleId = articleId;
+	}
+
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", name=" + name + ", content=" + content + "]";
+		return "Article [id=" + id + ", name=" + name + ", content=" + content + ", articleId=" + articleId + "]";
 	}
 }
