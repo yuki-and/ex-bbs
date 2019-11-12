@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Article;
+import com.example.form.InsertArticleForm;
 import com.example.repository.ArticleRepository;
 
 /**
@@ -36,4 +37,18 @@ public class ArticleController {
 		return "bbs";
 	}
 
+	/**
+	 * 記事を投稿する.
+	 * 
+	 * @param form　記事投稿時に使用するフォーム
+	 * @return　記事一覧画面
+	 */
+	@RequestMapping("/insertArticle")
+	public String insertArticle(InsertArticleForm form) {
+		Article article = new Article();
+		article.setName(form.getName());
+		article.setContent(form.getContent());
+		articleRepository.insert(article);
+		return "redirect:/article";
+	}
 }
