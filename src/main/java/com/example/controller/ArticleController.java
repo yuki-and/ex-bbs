@@ -54,7 +54,6 @@ public class ArticleController {
 		for (Article article : articleList) {
 			article.setCommentList(commentRepository.findByArticleId(article.getId()));
 		}
-		System.out.println(articleList);
 		model.addAttribute("articleList", articleList);
 		return "bbs";
 	}
@@ -73,13 +72,31 @@ public class ArticleController {
 		return "redirect:/article";
 	}
 	
+	/**
+	 * コメントを投稿する.
+	 * 
+	 * @param form　コメント投稿時に使用するフォーム
+	 * @return　記事一覧画面
+	 */
 	@RequestMapping("/insertComment")
 	public String insertComment(InsertCommentForm form) {
-		System.out.println(form);
 		Comment comment = new Comment();
 		BeanUtils.copyProperties(form, comment);
 		comment.setArticleId(Integer.parseInt(form.getArticleId()));
 		commentRepository.insert(comment);
+		return "redirect:/article";
+	}
+	
+	/**
+	 * 投稿とコメントを削除する.
+	 * 
+	 * @param id ID
+	 * @return 記事一覧画面
+	 */
+	@RequestMapping("/deleteArticle")
+	public String deleteArticle(Integer id) {
+		commentRepository.deleteByArticleId(id);
+		articleRepository.deleteById(id);
 		return "redirect:/article";
 	}
 }

@@ -22,7 +22,9 @@
 		投稿ID：<span th:text="${article.id}"></span><br> 
 		投稿者名：<span th:text="${article.name}"></span><br> 
 		投稿内容：<span th:text="${article.content}"></span><br>
+		<a th:href="@{'/article/deleteArticle?id=' + ${article.id}}" >
 		<button>記事削除</button>
+		</a>
 		<br>
 		<div th:each="comment:${article.commentList}">
 		コメントID：<span th:text="${comment.id}"></span><br> 
