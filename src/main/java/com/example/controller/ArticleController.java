@@ -51,9 +51,6 @@ public class ArticleController {
 	@RequestMapping("")
 	public String index(Model model) {
 		List<Article> articleList = articleRepository.findAll();
-		for (Article article : articleList) {
-			article.setCommentList(commentRepository.findByArticleId(article.getId()));
-		}
 		model.addAttribute("articleList", articleList);
 		return "bbs";
 	}
@@ -90,13 +87,13 @@ public class ArticleController {
 	/**
 	 * 投稿とコメントを削除する.
 	 * 
-	 * @param id ID
+	 * @param articleId ID
 	 * @return 記事一覧画面
 	 */
 	@RequestMapping("/deleteArticle")
-	public String deleteArticle(Integer id) {
-		commentRepository.deleteByArticleId(id);
-		articleRepository.deleteById(id);
+	public String deleteArticle(Integer articleId) {
+		commentRepository.deleteByArticleId(articleId);
+		articleRepository.deleteById(articleId);
 		return "redirect:/article";
 	}
 }
